@@ -1,0 +1,376 @@
+// // Crear mi tienda virtual (e commerce) de fotografias, para poder realizar cuadros.
+// // que en la galeria tenga la opcion de poder agregarlas al carrito, en 5 tamaños distintos.
+// // tambien tiene la opcion de elegir los papeles de impresion--> mate, brillo, gigantografia.
+// // Tipo de cuadro, con marco o sin marco,---> si elige con, que color o madera de marco, la base (paspartou, carto, etc)
+// // con vidrio o sin vidrio?.
+
+// // cuando vea la foto que se amplie , y que le aparezcan al lado las opciones de impresion y el click de ir al carrito debajo (en desktop)
+// // cuando este en mobile, que cuando la clickee, se amplien, y le aparezca el shopcart button abajo. Click event en cart button y se da vuelta la img, apareciendo el form de impresion en la parte trasera con animacion sofsticada. 
+
+// // dentro del carrito , que tiene que pasar  para que se agruegen los datos seleccionados por el usuario? hay que aguparlos por caracteristicas, donde luego de ser seleccionada cada una de ellas, retorne un nuevo array con todo lo seleccionado. Como cada una de las caracteristicas tienen propiedades de valor $, con el array resultante puedo crear una funcion de suma de todos sus componentes y el total de la compra. Si el usuario, eligiese dos tipos de cuadros, (o mas a delante pueden ser presets), que se pueda identificar los precios de cada uno de los productos que eligio y despues el total. 
+
+// // calcular envio dependiendo de la distancia donde se encuentre el comprador... si la compra supera X$, que sea gratis.
+// //una vez confirmado el carrito, lo que tendria que pasar seria la seleccion de pago, (al principio puedo usar API de mercado pago//Link (mejor usar api PERO EXCELENTE ))
+
+// //crear form de newsletter (suscripcion de videos nuevos, workshops, new realeses, decuentos).
+
+// //crear form de contacto, que lo envie a mi linked In fotografia y Fiverr fotografia.
+// //creat subform de contacto que me lleve a mi PortfoloWeb.
+// // que las reviews me re direccionen al trabajo que realice para cada cliente (sean webs o fotos) --// esto tambien es mas para adelante, hasta podria ser otra pag, porque estas mezclando la foto artistica con la de los clientes. Hace dos, una que seas  vos, otra que sea parte de tu portfolio sobre foto trabajos. (ahi si meter comercial, inmuebles, drone). que esta pag sea de tus fotos y tusviajes, de tu estilo de vida.
+
+// // cuando clickea la imagen para ampliar
+
+
+// carrito de compras 
+
+// const carritoDeCompras = []; //vacio para pushearle cada cuadro terminado, despues generar funcion de suma de cada uno de los cuadros y sus espesificaciones y precios.
+
+// // elegir tamaño: 
+
+
+
+// function tamaños(tamañoElegido) {
+
+//     if (tamañoElegido == "A0") {
+//         console.log("Dimensiones: 80cm X 110cm")
+//     }
+//     else if (tamañoElegido == "A1") {
+//         console.log("Dimensiones: 60cm X 85cm")
+//     }
+//     else if (tamañoElegido == "A2") {
+//         console.log("Dimensiones: 42cm X 60cm")
+//     }
+//     else if (tamañoElegido == "A3") {
+//         console.log("Dimensiones: 27cm X 42cm")
+//     }
+//     else if (tamañoElegido == "A4") {
+//         console.log("Dimensiones: 27cm X 21cm")
+//     }
+//     else if (tamañoElegido == "A5") {
+//         console.log("Dimensiones: 15cm X 21cm ")
+//     }
+//     else {
+//         alert("Elija un tamaño adecuado.")
+//     }
+//     return tamañoElegido;
+// }
+
+// tamañoElegido = tamaños(prompt("Elija entre los siguientes tamaños: A0, A1, A2, A3, A4, A5."))
+
+// // funcion para elegir el soporte del cuadro 
+
+// function soportes(soporteElegido) {
+//     switch (soporteElegido) {
+//         case ("PASPARTOU"):
+//             console.log("Soporte de cuadro: Paspartou")
+//             break;
+
+//         case ("FOAMBOARD"):
+//             console.log("Soporte de cuadro: Foamboard")
+//             break;
+
+//         case ("FIBROFACIL"):
+//             console.log("Soporte de cuadro: Fibrofacil")
+//             break;
+//         default:
+//             console.log("Soporte de cuadro: Bastidor Autoadhesivo")
+//     }
+//     return soporteElegido;
+// }
+
+// soporteElegido = soportes(prompt('Soporte del cuadro? Paspartou, Foamboard, Fibrofacil o Bastidor Autoadhesivo'));
+
+// // eleccion de si el cuadro va con vidrio o no:
+
+// // vidrioElegido = vidrios(prompt('Quiere con vidrio? en caso de elegir CON, podra elegir un marco tambien!'))
+
+// // eleccion de tipo de cuadro a partir de si eligen con o sin vidrio.
+
+// function marcos(marcoElegido) {
+//     if (marcoElegido == "MADERA 1CM") {
+//         console.log("Marco de madera 1cm");
+//     }
+//     else if (marcoElegido == "MADERA 2CM") {
+//         console.log('Marco de madera 2cm');
+//     }
+//     else if (marcoElegido == 'TRANSPARENTE VIDRIO') {
+//         console.log('Marco de vidrio transparente');
+//     }
+//     else {
+//         console.log('Sin marco');
+//     }
+//     let vidrioElegido = prompt("Escriba si quiere CON vidrio o SIN")
+//     for (marcoElegido of marcos) {
+//         do {
+//             {
+//                 if (vidrioElegido == "CON") {
+//                     console.log("Cuadro con vidrio")
+//                 }
+//                 else { console.log("Cuadro sin vidrio") }
+//             }
+//         }
+//         while (vidrioElegido !== "SIN")
+//     }
+// }
+
+// marcoElegido = marcos(prompt("Que marco quisiera? MADERA 1CM, MADERA 2CM, TRANSPARENTE DE VIDRIO, o, sin marco"));
+
+
+// // // clase del cuadro ya creado, a la cual le voy a pedir que devuelva toda la info de cada cuadro en la fn de carritoDeCompras.
+// class CuadroCreado {
+//     constructor(tamaño, soporte, marco, vidrio) {
+//         this.tamaño = tamaño,
+//             this.soporte = soporte,
+//             this.marco = marco,
+//             this.vidrio = vidrio
+//     }
+// }
+
+// cuadroTerminado = new CuadroCreado(tamañoElegido, soporteElegido, marcoElegido, vidrioElegido)
+
+// // // en esta variable van a ir todos los parametros de cada uno de los cuadros, los cuales voy a pasar como parametros de la constructora de la class.
+// // if ((tamañoElegido && soporteElegido) && (vidrioElegido == true )) {
+
+// // }
+// // else if ((tamañoElegido && soporteElegido) && (vidrioElegido == false)) {
+// //     cuadroTerminado = new CuadroCreado (tamañoElegido, soporteElegido,)}
+
+// // else {alert ('Revise los datos ingresados e intente nuevamente porfavor.'); }
+
+// console.log(cuadroTerminado);
+// cuadroTerminado.push(carritoDeCompras);
+
+
+
+// class Usuario {
+//     constructor(nombre, apellido, edad, id) {
+//       this.nombre = nombre;
+//       this.apellido = apellido;
+//       this.edad = edad;
+//       this.id = id;
+//     }
+//   }
+  
+//   const usuarios = [];
+//   let option = 0;
+//   do {
+//     option = parseInt(
+//       prompt(
+//         "Ingrese 1 para agregar, 4 para ver un usuario, 5 para ver todos, 6 para salir"
+//       )
+//     );
+//     switch (option) {
+//       case 1:
+//         agregarUsuario(usuarios);
+//         break;
+//       case 4:
+//         verUsuario(usuarios);
+//         break;
+//       case 5:
+//         verTodosLosUsuarios(usuarios);
+//         break;
+//       default:
+//         verTodosLosUsuarios(usuarios);
+//         break;
+//     }
+//   } while (option != 6);
+  
+//   // agregar
+//   function agregarUsuario(usuarios) {
+//     let nombre = prompt("Ingrese nombre");
+//     let apellido = prompt("Ingrese apellido");
+//     let edad = parseInt(prompt("Ingrese edad"));
+//     let newUser = new Usuario(nombre, apellido, edad, usuarios.length + 1);
+//     usuarios.push(newUser);
+//     console.log("Se agregó el usuario ", newUser);
+//   }
+  
+//   // ver todos
+//   function verTodosLosUsuarios(usuarios) {
+//     for (const usuario of usuarios) {
+//       console.log(usuario);
+//     }
+//   }
+  
+//   // ver un usuario
+//   function verUsuario(usuarios) {
+//     let texto = "";
+//     for (let index = 0; index < usuarios.length; index++) {
+//       texto = texto.concat(
+//         `Ingrese ${index + 1} para el usuario ${usuarios[index].nombre} \n`
+//       );
+//     }
+//     console.log(texto);
+//     const option = parseInt(prompt(texto));
+//     console.log(usuarios[option - 1]);
+//   }
+
+
+// class CuadroNuevo {
+//     constructor(tamaño, papel, soporte, marco, vidrio) {
+//         this.tamaño = tamaño;
+//         this.papel = papel;
+//         this.soporte = soporte;
+//         this.marco = marco;
+//         this.vidrio = vidrio
+//     }
+// }
+const carritoDeCompras = [];
+const cuadroCreado = [];
+let crearCuadro = "";
+
+class ElegirCuadro{
+    constructor(tamaños, papeles, soportes, marcos, vidrio){
+        this.tamaños = tamaños,
+        this.papeles = papeles,
+        this.soportes = soportes,
+        this.marcos = marcos,
+        this.vidrio = vidrio
+    }
+
+    tamaños(tamañoElegido) {
+
+    if (tamañoElegido == "A0") {
+        console.log("Dimensiones: 80cm X 110cm")
+    }
+    else if (tamañoElegido. == "A1") {
+        console.log("Dimensiones: 60cm X 85cm")
+    }
+    else if (tamañoElegido == "A2") {
+        console.log("Dimensiones: 42cm X 60cm")
+    }
+    else if (tamañoElegido == "A3") {
+        console.log("Dimensiones: 27cm X 42cm")
+    }
+    else if (tamañoElegido == "A4") {
+        console.log("Dimensiones: 27cm X 21cm")
+    }
+    else if (tamañoElegido == "A5") {
+        console.log("Dimensiones: 15cm X 21cm ")
+    }
+    else {
+        alert("Elija un tamaño adecuado.")
+    }
+    cuadroCreado.push(tamañoElegido)
+    // console.log 
+}
+}
+do {
+    crearCuadro = prompt(
+            "Ingrese 'SI' para crear un nuevo cuadro, 'CARRITO' para ver el carrito de compras, y 'ESC' para volver al menu principal"
+        );
+    switch (crearCuadro) {
+        case "SI":
+            ElegirCuadro (cuadroCreado);
+            break;
+        case "CARRITO":
+            verCarrito(cuadroCreado);
+            break;
+        case "ESC":
+            volverMenu(crearCuadro);
+            break;
+        default:
+            // que me devuelva a la galeria ;
+            break;
+    }
+} while (crearCuadro != "");
+
+// // agregarTamaño
+// function elegirTamaño(cuadroCreado) {
+//     let tamañoElegido = prompt("Ingrese nombre");
+//     let apellido = prompt("Ingrese apellido");
+//     let edad = parseInt(prompt("Ingrese edad"));
+//     let newUser = new Usuario(nombre, apellido, edad, usuarios.length + 1);
+//     usuarios.push(newUser);
+//     console.log("Se agregó el usuario ", newUser);
+// }
+// class ElegirCuadro{
+//     constructor(tamaños, papeles, soportes, marcos, vidrio){
+//         this.tamaños = tamaños,
+//         this.papeles = papeles,
+//         this.soportes = soportes,
+//         this.marcos = marcos,
+//         this.vidrio = vidrio
+//     }
+
+//     tamaños(tamañoElegido) {
+
+//     if (tamañoElegido == "A0") {
+//         console.log("Dimensiones: 80cm X 110cm")
+//     }
+//     else if (tamañoElegido == "A1") {
+//         console.log("Dimensiones: 60cm X 85cm")
+//     }
+//     else if (tamañoElegido == "A2") {
+//         console.log("Dimensiones: 42cm X 60cm")
+//     }
+//     else if (tamañoElegido == "A3") {
+//         console.log("Dimensiones: 27cm X 42cm")
+//     }
+//     else if (tamañoElegido == "A4") {
+//         console.log("Dimensiones: 27cm X 21cm")
+//     }
+//     else if (tamañoElegido == "A5") {
+//         console.log("Dimensiones: 15cm X 21cm ")
+//     }
+//     else {
+//         alert("Elija un tamaño adecuado.")
+//     }
+//     cuadroCreado.push(tamañoElegido)
+//     // console.log 
+// }
+// }
+// // ver todos
+// function verTodosLosUsuarios(usuarios) {
+//     for (const usuario of usuarios) {
+//         console.log(usuario);
+//     }
+// }
+
+// // ver un usuario
+// function verUsuario(usuarios) {
+//     let texto = "";
+//     for (let index = 0; index < usuarios.length; index++) {
+//         texto = texto.concat(
+//             `Ingrese ${index + 1} para el usuario ${usuarios[index].nombre} \n`
+//         );
+//     }
+//     console.log(texto);
+//     const option = parseInt(prompt(texto));
+//     console.log(usuarios[option - 1]);
+// }
+
+
+// para poder referenciar mejor y no tener que escribir codigo al PerformancePaintTiming, es mejor realizar una clase, con dentro de ella lo que es el cuadro, sus propiedadaes.
+// y despues, a esas propiedades, referenciarlas con funciones, donde en esas funciones retornen lo que el usuario seleccione.
+// entonces, tengo que crear 4 funciones o 5, una de cada propiedad, con todas sus opciones dentro, y un condicional que me devuelva X valor, que haya seleccionado el usuario y que con ese retorno se me vaya armando la clase de CUADRO NUEVO. 
+// luego, que de esos cuadros nuevos, (que se vayan creando cada vez que clickean  en agregar a carrito,) se vayan agregando los cuadros a un array de carro con el preco de cada uno dee ellos y de cada una de sus propedades, las cantidades de cuadros y el total de precios y el precio de cada uno.
+//  para lograr esto ultimo, deberia crear un array de objetos? o como puedo hacerlo? o crear otra clase que sea precio, nombre y referencia.
+// ___// como hago la relacion para que el return se aplique sobre cada uno de las propiedades? 
+//Creo la fn, con el (nombredevariable que rellena con prompt?){
+    // condicionales
+// }
+// quedaria: 
+//  class CuadroNuevo {
+    // constrctor (TAMANIO, PAPEL, MONTAJE, MARCO Y VIDRIO){
+//             this.tamanio = tamanio,
+//             this.papel = papel,
+//             this.montaje = montaje,
+//             this.marco y vidrio = marco y vidrio
+// //     }
+            //aca creo fn q retorne segun PROMPT y condicional el VALOR de la propiedad de la class:
+            //tamanio(VARINGRESARTAMANIO) {
+                // if ()
+                // else if{}
+                // else 
+            // }
+            // tiene que ir con return? 
+
+// }
+// let ingresartamanio = prompt (ingrese tamanio)
+// asi con cada una de las propiedades, entonces despues creo una CONST (que se active con un evento de click, cuando la agrega al carrito, mandando el cuadro completo al array carrito)
+
+// y aca con esta const CuadroTerminado = new cuadroNuevo (class) (variable tamanio, variable papel, variable montaje, variable marco)
+
+//Otra forma de realizarlo es crear cada una de las propiedades, un array de objetos, (lo cual es muucho mas codigo,) con un ID cada uno, ej: si elegis paspartou tama;o a4 que salga id: X... lo mnejor seria hacerlo directamente con las clases. 
+
